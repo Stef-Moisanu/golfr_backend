@@ -28,9 +28,8 @@ describe Api::ScoresController, type: :request do
     end
 
     it 'should limit number of scores to 25' do
-
-      27.times do|i|
-        create(:score, user: @user1, total_score: i, played_at: '2021-05-20')
+      27.times do |i|
+        create(:score, user: @user1, total_score: 66 + i, played_at: '2021-05-20')
       end
 
       get api_feed_path
