@@ -6,20 +6,19 @@ module Api
 
     def show
       user = User.find_by(id: params[:id])
-      if !user
-        render json: {
-          errors: [
-            'User with id=' + params[:id] + ' not found'
-          ]
-        }, status: :not_found
-      else
-        puts('name' + user.name)
+      if user
         render json: {
           user: {
             name: user.name,
             scores: user.scores
           }
         }
+      else
+        render json: {
+          errors: [
+            'User with id=' + params[:id] + ' not found'
+          ]
+        }, status: :not_found
       end
     end
 
